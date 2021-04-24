@@ -1,0 +1,19 @@
+{
+  "name": "bp_praktisch_node",
+  "version": "1.0.0",
+  "description": "Node backend voor de praktische proef van mijn BP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordyVanKerkvoorde/BP_praktisch_node.git"
+  },
+  "author": "Jordy Van Kerkvoorde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JordyVanKerkvoorde/BP_praktisch_node/issues"
+  },
+  "homepage": "https://github.com/JordyVanKerkvoorde/BP_praktisch_node#readme"
+}
