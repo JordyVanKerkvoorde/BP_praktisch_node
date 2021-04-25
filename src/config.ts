@@ -1,4 +1,7 @@
 export default {
+    api: {
+        port: process.env.PORT || 3000
+    },
     database: {
         driver: process.env.DB_DRIVER || 'mysql',
         username: process.env.DB_USER || 'root',

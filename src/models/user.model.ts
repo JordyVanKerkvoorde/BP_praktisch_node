@@ -1,11 +1,16 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
-import { Roles } from "./role.enum";
+import { Roles } from "../domain/role.enum";
 
 @Table({
     tableName: 'users',
     timestamps: true
 })
 export default class User extends Model {
+    @Column({
+        allowNull: false
+    })
+    uuid: string;
+
     @Column({
         allowNull: false
     })
@@ -25,6 +30,16 @@ export default class User extends Model {
         allowNull: false
     })
     email: string;
+
+    @Column({
+        allowNull: false
+    })
+    password: string;
+
+    @Column({
+        allowNull: false
+    })
+    salt: string;
 
     @Column({
         allowNull: false,

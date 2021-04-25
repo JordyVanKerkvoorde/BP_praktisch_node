@@ -17,7 +17,7 @@ export const sequelize = new Sequelize({
         collate: config.database.collate
     },
     modelPaths: [
-        path.resolve(`${__dirname}/models`),
+        path.resolve(path.join(__dirname, '..', '/models')),
     ],
     logging: config.log.sequelize ? (msg: string) => console.info(msg) : false
 } as SequelizeOptions)
