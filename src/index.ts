@@ -14,7 +14,8 @@ app.use(bodyParser.json({
     limit: '4096kb'
 }));
 
-app.post('/register', userController.register)
+app.post('/register', userController.register);
+app.post('/login', userController.login);
 
 app.listen(config.api.port, () => {
     console.info(`API running on port: ${config.api.port}`)

@@ -11,7 +11,6 @@ class UserService {
         // temp
         data.dateOfBirth = new Date().toISOString();
         data.uuid = uuidv4();
-        console.log(data);
 
         return User.create(data);
     }
@@ -36,6 +35,20 @@ class UserService {
 
     checkPassword(password: string, hash: string, salt: string) {
         return this.hashPassword(password, salt).password === hash;
+    }
+
+    getUserByEmail(email: string): Promise<User | null> {
+        return User.findOne({ where: { email }});
+    }
+
+    async login(data: any){
+        const user = await this.getUserByEmail(data.email);
+        console.log(user)
+
+        if(!user) throw Error(`User not found with email: ${data.email}`);
+        if(!this.checkPassword(data.password, user.password, user.salt)) throw Error('Password incorrect');
+
+        return user;
     }
 }
 
