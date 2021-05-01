@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import config from './config'
 import { userController } from "./controllers/user.controller";
 import bodyParser from 'body-parser';
+import { restRouter } from "./rest.router";
 
 sequelize.sync()
     .then(() => console.info('Sequelize connected...'))
@@ -14,8 +15,7 @@ app.use(bodyParser.json({
     limit: '4096kb'
 }));
 
-app.post('/register', userController.register);
-app.post('/login', userController.login);
+app.use(restRouter.routes());
 
 app.listen(config.api.port, () => {
     console.info(`API running on port: ${config.api.port}`)

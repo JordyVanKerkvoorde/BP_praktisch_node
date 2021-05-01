@@ -27,6 +27,7 @@ class UserService {
         const hash = crypto.createHmac('sha512', salt);
         hash.update(password);
         password = hash.digest('hex');
+        
         return {
             password,
             salt
@@ -43,7 +44,6 @@ class UserService {
 
     async login(data: any){
         const user = await this.getUserByEmail(data.email);
-        console.log(user)
 
         if(!user) throw Error(`User not found with email: ${data.email}`);
         if(!this.checkPassword(data.password, user.password, user.salt)) throw Error('Password incorrect');
