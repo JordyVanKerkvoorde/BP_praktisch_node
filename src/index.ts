@@ -1,7 +1,6 @@
 import { sequelize } from "./database/database.service";
-import express, { Request, Response } from 'express';
+import express from 'express';
 import config from './config'
-import { userController } from "./controllers/user.controller";
 import bodyParser from 'body-parser';
 import { restRouter } from "./rest.router";
 

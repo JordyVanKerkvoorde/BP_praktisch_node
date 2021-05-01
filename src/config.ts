@@ -14,5 +14,8 @@ export default {
     },
     log: {
         sequelize: true
+    },
+    jwt: {
+        secret: process.env.JWT_SECRET || 'YoUsHoUlDrEaLlYsEtAvAriAbLeFoRtHiS458748413$$^45.'
     }
 }
