@@ -18,4 +18,4 @@ app.use(restRouter.routes());
 
 app.listen(config.api.port, () => {
     console.info(`API running on port: ${config.api.port}`)
-})
+});

@@ -5,15 +5,16 @@ import config from '../config'
 class AuthMiddleware {
     public authenticate(req: Request, res: Response, next: NextFunction) {
         try{
-            if(!req.headers.authorization) return res.status(401).json("Unauthorized");
             const header = req.headers.authorization;
     
             if(typeof header !== 'undefined') {
                 const bearer = header.split(' ')[1];
-                const decoded = jwt.verify(bearer, config.jwt.secret);
+                const decoded: any = jwt.verify(bearer, config.jwt.secret);
+                req.auth = {
+                    user: decoded.user
+                };
                 
-                req.auth = decoded;
-                next();
+                return next();
             } else {
                 return res.status(401).json("Unauthorized");
             }
