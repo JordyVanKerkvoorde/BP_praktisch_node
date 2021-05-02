@@ -1,10 +1,16 @@
-import { Column, Model, Table } from "sequelize-typescript";
+import { Column, ForeignKey, Model, Table } from "sequelize-typescript";
+import User from "./user.model";
 
 @Table({
     tableName: 'venues',
     timestamps: true
 })
 export default class Venue extends Model {
+    @Column({
+        allowNull: false
+    })
+    uuid: string;
+
     @Column({
         allowNull: false
     })
@@ -29,4 +35,10 @@ export default class Venue extends Model {
         allowNull: true
     })
     availableSpots: number;
+
+    @Column({
+        allowNull: false
+    })
+    @ForeignKey(() => User)
+    ownerId: number;
 }

@@ -9,8 +9,7 @@ class RoleMiddleware {
             middleware[role.toLocaleLowerCase()] = (req: Request, res: Response, next: NextFunction) => {
                 const userRole = req.auth.user.role;
                 if(userRole === role) next();
-
-                return res.status(401).json('Forbidden');
+                else return res.status(401).json('Forbidden');
             } 
         })
 

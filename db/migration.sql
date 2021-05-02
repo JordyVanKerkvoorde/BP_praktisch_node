@@ -3,7 +3,7 @@ create table venues (
 	id int not null auto_increment,
 	`uuid` char(36) not null,
     `name` varchar(255) not null,
-    logitude double,
+    longitude double,
     latitude double,
     address varchar(255),
     availableSpots int(11),
