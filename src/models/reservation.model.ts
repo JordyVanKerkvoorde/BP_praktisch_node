@@ -7,6 +7,12 @@ import Venue from "./venue.model";
     timestamps: true
 })
 export default class Reservation extends Model {
+
+    @Column({
+        allowNull: false,
+    })
+    uuid: string;
+
     @Column({
         allowNull: false
     })
@@ -15,7 +21,12 @@ export default class Reservation extends Model {
     @Column({
         allowNull: false
     })
-    reservationDate: Date;
+    reservationStart: Date;
+
+    @Column({
+        allowNull: false
+    })
+    reservationEnd: Date;
 
     @Column({
         allowNull: false
@@ -26,7 +37,7 @@ export default class Reservation extends Model {
         allowNull: false
     })
     @ForeignKey(() => Venue)
-    venueId: number;
+    venueId: string;
 
     // @BelongsTo(() => Venue, {
     //     onUpdate: 'CASCADE',

@@ -30,16 +30,18 @@ create table users (
 
 -- Add reservations table
 create table reservations (
+	id int not null auto_increment,
 	`uuid` char(36) not null,
     spots int(11) not null,
-    reservationDate datetime not null,
+    reservationStart datetime not null,
+    reservationEnd datetime not null,
     createdAt datetime not null,
     updatedAt datetime not null,
     venueId int not null,
     userId int not null,
     constraint reservations_ibfk_1 foreign key (venueId) references venues(id) on delete cascade on update cascade,
 	constraint reservations_ibfk_2 foreign key (userId) references users(id) on delete cascade on update cascade,
-    primary key(`uuid`)
+    primary key(id)
 );
 
 -- Add owner as fk referencing user
