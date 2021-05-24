@@ -1,7 +1,9 @@
 import { Router } from 'express';
+import { reservationController } from './controllers/reservation.controller';
 import { userController } from './controllers/user.controller';
 import { venueController } from './controllers/venue.controller';
 import { authMiddleware } from './middleware/auth.middleware';
+import { ownerMiddleware } from './middleware/owner.middleware';
 import { roleMiddleware } from './middleware/role.middleware';
 
 class RestRouter {
@@ -20,7 +22,12 @@ class RestRouter {
         router.put('/venues/:uuid', authMiddleware.authenticate, roleMiddleware.owner, venueController.update);
         router.delete('/venues/:uuid', authMiddleware.authenticate, roleMiddleware.owner, venueController.delete);
 
-        // registration
+        // reservation
+        router.get('/reservations', authMiddleware.authenticate, ownerMiddleware.authenticate, reservationController.get);
+        router.post('/reservations', authMiddleware.authenticate, reservationController.create);
+        router.put('/reservations/:uuid', authMiddleware.authenticate, reservationController.update);
+        router.delete('/reservations/:uuid', authMiddleware.authenticate, reservationController.delete);
+
         
         return router;
     }
