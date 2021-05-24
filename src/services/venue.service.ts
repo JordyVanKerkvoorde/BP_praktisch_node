@@ -12,8 +12,9 @@ class VenueServive {
         return this.get(body.uuid);
     }
 
-    get(uuid: string): Promise<Venue | null> {
-        return Venue.findOne({ where: { uuid } });
+    async get(uuid: string): Promise<Venue | null> {
+        return (await this.getAll()).filter(x => x.uuid === uuid)[0];
+        // return Venue.findOne({ where: { uuid } });
     }
 
     async update(uuid: string, venueData: any): Promise<Venue | null> {
